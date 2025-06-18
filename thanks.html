@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>thank you | beige</title>
+    <link rel="stylesheet" href="wafflecss/wafflemain.css">
+    <script src="wafflejs/main.js" defer></script>
+    <style>
+        .thank-you {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--beige-light);
+        }
+        
+        .thank-you .logo {
+            width: 180px;
+            margin-bottom: 40px;
+        }
+        
+        .thank-you h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .thank-you p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background-color: var(--beige-accent);
+            color: var(--beige-light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--beige-accent);
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            background-color: transparent;
+            color: var(--beige-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you">
+        <img src="waffleassets/beige.svg" alt="beige" class="logo">
+        <h1>thank you for your message</h1>
+        <p>we've received your message and will get back to you shortly.</p>
+        <a href="index.html" class="back-link">return to home</a>
+    </div>
+</body>
+</html> 

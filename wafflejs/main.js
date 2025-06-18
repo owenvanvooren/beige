@@ -55,21 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check
     revealOnScroll();
     
-    // Form validation and submission
+    // Additional form enhancement
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
+        // Add loading state to submit button when form is submitted
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            // Make sure email reply-to is set
+            const emailInput = document.getElementById('email');
+            const replyToInput = document.querySelector('input[name="_replyto"]');
+            if (emailInput && replyToInput) {
+                replyToInput.value = emailInput.value;
+            }
             
-            // Simple validation example
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (name && email && message) {
-                // In a real application, you would send this data to a server
-                alert('Thank you for your message! We will get back to you soon.');
-                contactForm.reset();
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            if (submitBtn) {
+                submitBtn.innerHTML = 'sending...';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('submitting');
             }
         });
     }

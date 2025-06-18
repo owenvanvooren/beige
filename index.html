@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>beige | a tech company for humans</title>
     <link rel="stylesheet" href="wafflecss/wafflemain.css">
-
     <script src="wafflejs/main.js" defer></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -33,7 +34,7 @@
             <div class="hero-decoration"></div>
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="waffleassets/beige.svg" alt="beige" class="logo-hero">
+                    <img src="waffleassets/beige.svg" alt="beige" class="logo-hero" draggable="false" oncontextmenu="return false;">
                 </div>
                 <p class="motto">a tech company for humans</p>
                 <a href="#about" class="cta-button">learn more</a>
@@ -43,19 +44,35 @@
         <section id="about" class="about">
             <div class="container">
                 <h2>about us</h2>
-                <p>we create technology with humans in mind. our approach focuses on simplicity, reliability, and intuitive design that adapts to how people naturally think and interact.</p>
+                <p>we create technology with humans in mind. our approach focuses on simplicity, reliability, and
+                    intuitive design that adapts to how people naturally think and interact.</p>
                 <div class="feature-grid">
                     <div class="feature">
-                        <h3>human-centered</h3>
-                        <p>we prioritize human needs over technological complexity</p>
+                        <div class="feature-icon">
+                            <img src="waffleassets/waffleicons/hc.svg" alt="human centered" class="icon">
+                        </div>
+                        <div class="feature-content">
+                            <h3>human-centered</h3>
+                            <p>we prioritize human needs over technological complexity</p>
+                        </div>
                     </div>
                     <div class="feature">
-                        <h3>thoughtful design</h3>
-                        <p>all of our products are crafted with precision and intention</p>
+                        <div class="feature-icon">
+                            <img src="waffleassets/waffleicons/td.svg" alt="thoughtful design" class="icon">
+                        </div>
+                        <div class="feature-content">
+                            <h3>thoughtful design</h3>
+                            <p>all of our products are crafted with precision and intention</p>
+                        </div>
                     </div>
                     <div class="feature">
-                        <h3>accessible tech</h3>
-                        <p>creating technology that anyone can use and understand</p>
+                        <div class="feature-icon">
+                            <img src="waffleassets/waffleicons/ac.svg" alt="accessibility" class="icon">
+                        </div>
+                        <div class="feature-content">
+                            <h3>accessible tech</h3>
+                            <p>creating technology that anyone can use and understand</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,7 +87,7 @@
                         <h3>our first product</h3>
                         <p>it may be hardware. it may be software. but it's coming soon.</p>
                     </div>
-            </div>
+                </div>
         </section>
 
         <section id="team" class="team">
@@ -78,7 +95,7 @@
                 <h2>the humans behind beige</h2>
                 <div class="team-grid">
                     <div class="team-member">
-                        <div class="member-photo"><img src="waffleassets/owen.jpeg" alt="owen"></div>
+                        <div class="member-photo"><a href="https://owen.uno/"><img src="waffleassets/owen.jpeg" alt="owen" draggable="false" oncontextmenu="return false;"></a></div>
                         <h3>owen van vooren</h3>
                         <p>founder & designer</p>
                     </div>
@@ -90,7 +107,9 @@
             <div class="container">
                 <h2>get in touch</h2>
                 <p>we'd love to hear from you. reach out for collaborations, questions, or just to say hello.</p>
-                <form class="contact-form">
+                <form class="contact-form" name="contact" data-netlify="true" action="/thanks.html" method="POST">
+                    <input type="hidden" name="form-name" value="contact">
+
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="your name" required>
                     </div>
@@ -132,6 +151,8 @@
         </div>
     </footer>
 
+    <script type="module" src="wafflejs/firebase.js"></script>
 
 </body>
+
 </html>
