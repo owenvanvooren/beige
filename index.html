@@ -17,6 +17,13 @@
 </head>
 
 <body>
+    <!-- Hidden form for Netlify -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+    
     <header>
         <nav>
             <div class="logo-container">
@@ -116,9 +123,13 @@
             <div class="container">
                 <h2>get in touch</h2>
                 <p>we'd love to hear from you. reach out for collaborations, questions, or just to say hello.</p>
-                <form class="contact-form" name="contact" data-netlify="true" netlify>
-    <input type="hidden" name="form-name" value="contact">
-
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="78dd2d44-60e7-4c61-87b9-b7e1aa6cf70a">
+                    
+                    <input type="hidden" name="redirect" value="https://beige.owen.uno/thanks.html">
+                    <input type="hidden" name="subject" value="New message from beige website">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="your name" required>
                     </div>
@@ -162,7 +173,51 @@
     </footer>
 
     <script type="module" src="wafflejs/firebase.js"></script>
+    
+    <script>
+        const form = document.getElementById("contact-form");
 
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector(".submit-btn");
+            submitBtn.innerHTML = "sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: json,
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Redirect immediately on success
+                    window.location.href = "thanks.html";
+                } else {
+                    console.log(response);
+                    // Reset button on error
+                    submitBtn.innerHTML = "send message";
+                    submitBtn.disabled = false;
+                    alert("Something went wrong. Please try again.");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                // Reset button on error
+                submitBtn.innerHTML = "send message";
+                submitBtn.disabled = false;
+                alert("Something went wrong. Please try again.");
+            });
+        });
+    </script>
 </body>
 
 </html>
