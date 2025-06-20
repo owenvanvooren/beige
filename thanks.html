@@ -53,6 +53,13 @@
     </style>
 </head>
 <body>
+    <!-- Hidden form for Netlify to process POST requests -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+    
     <div class="thank-you">
         <img src="waffleassets/beige.svg" alt="beige" class="logo">
         <h1>thank you for your message</h1>
